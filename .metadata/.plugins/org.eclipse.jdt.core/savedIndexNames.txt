@@ -88,7 +88,6 @@ INDEX VERSION 1.134+/Users/01051899/Desktop/TechA/Lesson7/lesson9/.metadata/.plu
 3139905897.index
 2313289347.index
 913753553.index
-975349107.index
 656030523.index
 3511303440.index
 1503279475.index
