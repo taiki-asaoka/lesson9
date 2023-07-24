@@ -5,6 +5,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,16 +26,27 @@ public class UserController {
                 model.addAttribute("userlist", userService.getUserList());
                 return "user/list";
         }
-        @GetMapping("register")
-        public String register(Model model) {
-        	return "user/register";
+        @RequestMapping("register")
+        public String register(@ModelAttribute User user,Model model) {
+                return "user/register";
         }
 
         @RequestMapping(path="register", params="registerRun")
-        public String registerRun(@ModelAttribute User user, Model model) {
-                userService.saveUser(user);
-                model.addAttribute("userlist", userService.getUserList());
-                return "user/list";
+        public String registerRun(@ModelAttribute @Validated User user,
+                                                        BindingResult res,
+                                                        Model model) {
+                String rtn = null;
+                if (!res.hasErrors()) {
+                        userService.saveUser(user);
+                        model.addAttribute("userlist", userService.getUserList());
+                        rtn = "user/list";
+                } else {
+                        model.addAttribute("errmsg", "不正な入力値を修正してください。");
+//                        後で直す
+                        model.addAttribute("user", user);
+                        rtn = "user/register";
+                }
+                return rtn;
         }
         
         @RequestMapping(path="list", params="toChange")

@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,75 +12,84 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 
 
 @Entity
 @Table(name="user")
 public class User implements Serializable{
-    private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
 
-    /** 性別の列挙 **/
-    public static enum Gender{
-            male, female
-    }
-	
-	 /** ID */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	 /** 名前 */
-    @Column(length=20, nullable=false)
-    private String name;
+        /** 性別の列挙 **/
+        public static enum Gender{
+                male, female
+        }
 
-    /** 性別 */
-    @Column(length=2)
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+        /** ID */
+        @Id
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
+        private Integer id;
 
-    /** 年齢 */
-    private Integer age;
+        /** 名前 */
+        @Column(length=20, nullable=false)
+        @NotEmpty
+        @Length(max=20)
+        private String name;
 
-    /** メールアドレス */
-    @Column(length=50)
-    private String email;
+        /** 性別 */
+        @Column(length=2)
+        @Enumerated(EnumType.STRING)
+        private Gender gender;
 
-    public Integer getId() {
-            return id;
-    }
+        /** 年齢 */
+        @Min(value=0)
+        private Integer age;
 
-    public void setId(Integer id) {
-            this.id = id;
-    }
+        /** メールアドレス */
+        @Column(length=50)
+        @Email
+        @Length(max=50)
+        private String email;
 
-    public String getName() {
-            return name;
-    }
+        public Integer getId() {
+                return id;
+        }
 
-    public void setName(String name) {
-            this.name = name;
-    }
+        public void setId(Integer id) {
+                this.id = id;
+        }
 
-    public Gender getGender() {
-            return gender;
-    }
+        public String getName() {
+                return name;
+        }
 
-    public void setGender(Gender gender) {
-            this.gender = gender;
-    }
+        public void setName(String name) {
+                this.name = name;
+        }
 
-    public Integer getAge() {
-            return age;
-    }
+        public Gender getGender() {
+                return gender;
+        }
 
-    public void setAge(Integer age) {
-            this.age = age;
-    }
+        public void setGender(Gender gender) {
+                this.gender = gender;
+        }
 
-    public String getEmail() {
-            return email;
-    }
+        public Integer getAge() {
+                return age;
+        }
 
-    public void setEmail(String email) {
-            this.email = email;
-    }
+        public void setAge(Integer age) {
+                this.age = age;
+        }
+
+        public String getEmail() {
+                return email;
+        }
+
+        public void setEmail(String email) {
+                this.email = email;
+        }
 }
