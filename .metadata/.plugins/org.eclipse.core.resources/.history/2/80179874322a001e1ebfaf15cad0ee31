@@ -1,0 +1,4 @@
+INSERT INTO user ( name, gender, age, email ) VALUES ( "kiramekiTaro", "male", 27, 'taro.kirameki@mail.com' );
+INSERT INTO user ( name, gender, age, email ) VALUES ( "kiramekiJiro", "male", 22, 'jiro.kirameki@mail.com' );
+INSERT INTO user ( name, gender, age, email ) VALUES ( "kiramekiHanako", "female", 25, 'hanako.kirameki@mail.com' );
+        

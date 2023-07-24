@@ -19,7 +19,7 @@ public class User implements Serializable{
 
     /** 性別の列挙 **/
     public static enum Gender{
-            男性, 女性
+            male, female
     }
 	
 	 /** ID */

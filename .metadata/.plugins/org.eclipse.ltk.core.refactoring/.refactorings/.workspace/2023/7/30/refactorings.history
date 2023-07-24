@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="リソース &apos;TutorialDev/src/main/resources/data.sql&apos; を削除" deleteContents="false" description="リソース &apos;TutorialDev/src/main/resources/data.sql&apos; を削除" element1="/TutorialDev/src/main/resources/data.sql" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1690209307327"/>&#x0A;<refactoring comment="リソース &apos;TutorialDev/src/main/resources/data.sql&apos; を削除" deleteContents="false" description="リソース &apos;TutorialDev/src/main/resources/data.sql&apos; を削除" element1="/TutorialDev/src/main/resources/data.sql" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1690210504623"/>
+</session>
