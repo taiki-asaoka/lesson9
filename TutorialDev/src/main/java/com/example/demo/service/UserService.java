@@ -1,6 +1,4 @@
 //source ~/.bash_profileをターミナルで実行してからSQLは始める！
-
-
 package com.example.demo.service;
 
 import java.util.List;
@@ -20,5 +18,10 @@ public class UserService {
 
         public List<User> getUserList() {
                 return userRepository.findAll();
+        }
+
+        @Transactional(readOnly=false)
+        public User saveUser(User user) {
+                return userRepository.save(user);
         }
 }

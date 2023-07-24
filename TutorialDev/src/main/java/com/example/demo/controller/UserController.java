@@ -4,10 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
-
 
 @Controller
 @RequestMapping("user")
@@ -17,6 +18,17 @@ public class UserController {
 
         @GetMapping("list")
         public String list(Model model) {
+                model.addAttribute("userlist", userService.getUserList());
+                return "user/list";
+        }
+        @GetMapping("register")
+        public String register(Model model) {
+        	return "user/register";
+        }
+
+        @RequestMapping(path="register", params="registerRun")
+        public String registerRun(@ModelAttribute User user, Model model) {
+                userService.saveUser(user);
                 model.addAttribute("userlist", userService.getUserList());
                 return "user/list";
         }
