@@ -65,7 +65,6 @@
 <body>
         <h1>User情報管理システム</h1>
         <h2>User一覧(全件)</h2>
-        <button  onclick="location.href='/user/register'">User登録へ</button>
         <form name="frm" method="post" action="/user/list" th:action="@{/user/list}">
         <input type="submit" name="toChange" value="(選択)したUserを変更" onclick="return clickBtnChange()" />
         <input type="submit" name="deleteRun" value="(選択)したUserを一括削除" onclick="return clickBtnDelete()" />
