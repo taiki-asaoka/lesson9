@@ -11,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
@@ -20,7 +21,8 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 @Table(name="user")
 public class User implements Serializable{
-        private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+
 
         /** 性別の列挙 **/
         public static enum Gender{
@@ -53,10 +55,13 @@ public class User implements Serializable{
         @Length(max=50)
         private String email;
 
+        /** 認証エンティティと関連定義 */
+        @OneToOne(mappedBy="user")
+        private Authentication authentication;
+
         public Integer getId() {
                 return id;
         }
-
         public void setId(Integer id) {
                 this.id = id;
         }
@@ -92,4 +97,11 @@ public class User implements Serializable{
         public void setEmail(String email) {
                 this.email = email;
         }
+        public Authentication getAuthentication() {
+            return authentication;
+    }
+
+    public void setAuthentication(Authentication authentication) {
+            this.authentication = authentication;
+    }
 }
