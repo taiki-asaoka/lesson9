@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import java.util.Locale;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,9 @@ import com.example.demo.service.UserService;
 public class UserController {
         @Autowired
         private UserService userService;
+        
+        @Autowired
+        MessageSource messageSource;
 
         @GetMapping("list")
         public String list(Model model) {
@@ -41,8 +46,8 @@ public class UserController {
                         model.addAttribute("userlist", userService.getUserList());
                         rtn = "user/list";
                 } else {
-                        model.addAttribute("errmsg", "hoge");
-//                        後で直す
+                        model.addAttribute("errmsg", messageSource.getMessage("errmsg.form.input", null, Locale.getDefault()));
+
                         model.addAttribute("user", user);
                         rtn = "user/register";
                 }
@@ -71,7 +76,7 @@ public class UserController {
                         model.addAttribute("userlist", userService.getUserList());
                         rtn = "user/list";
                 } else {
-                        model.addAttribute("errmsg", "hoge");
+                	 model.addAttribute("errmsg", messageSource.getMessage("errmsg.form.input", null, Locale.getDefault()));
 //                        後で直す
                         model.addAttribute("user", user);
                         rtn = "user/change";
