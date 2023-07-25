@@ -40,6 +40,6 @@
                 <br />
                 <input type="submit" name="registerRun" value="登録実行" />
         </form>
-        <button  onclick="location.href='/user/list'">戻る</button>
+        <button  onclick="location.href='/list'">戻る</button>
 </body>
 </html>
