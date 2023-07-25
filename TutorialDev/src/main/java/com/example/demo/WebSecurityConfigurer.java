@@ -35,7 +35,7 @@ public class WebSecurityConfigurer extends WebSecurityConfiguration {
                         .loginProcessingUrl("/login")
                         .usernameParameter("loginuser")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/user/list/", true)
+                        .defaultSuccessUrl("/user/list")
                         .failureUrl("/login?error=ture").permitAll();
         }
 
